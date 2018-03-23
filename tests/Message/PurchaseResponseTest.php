@@ -1,5 +1,6 @@
 <?php
 
+use Omnipay\Eghl\Message\AbstractRequest;
 use Omnipay\Eghl\Message\PurchaseResponse;
 use Omnipay\Tests\TestCase;
 
@@ -62,9 +63,15 @@ class PurchaseResponseTest extends TestCase
             'PageTimeout' => 600
         ];
 
-        $request = $this->getMockRequest();
+        $request = $this
+            ->getMockBuilder(AbstractRequest::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
-        $request->shouldReceive('getTestMode')->once()->andReturn(false);
+        $request
+            ->expects($this->any())
+            ->method('getTestMode')
+            ->will($this->returnValue(false));
 
         $response = new PurchaseResponse($request, $data);
 
