@@ -9,7 +9,24 @@
 namespace Omnipay\Eghl\Message;
 
 
-class CompletePurchaseResponse
+use Omnipay\Common\Message\AbstractResponse;
+
+class CompletePurchaseResponse extends AbstractResponse
 {
+    public function isSuccessful()
+    {
+        return strtoupper($this->data['HashValue2']) ==  strtoupper($this->data['computed_hash_value']);
+    }
+
+    public function getTransactionId()
+    {
+        return $this->data['PaymentID'];
+    }
+
+    public function getTransactionReference()
+    {
+        return $this->data['TxnID'];
+    }
+
 
 }
