@@ -40,4 +40,14 @@ class Gateway extends AbstractGateway
         return $this->setParameter('merchantPassword', $merchantPassword);
     }
 
+    public function purchase(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Eghl\Message\PurchaseRequest', $parameters);
+    }
+
+    public function completePurchase(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Eghl\Message\CompletePurchaseRequest', $parameters);
+    }
+
 }

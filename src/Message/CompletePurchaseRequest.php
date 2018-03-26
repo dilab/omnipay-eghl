@@ -3,8 +3,6 @@
 namespace Omnipay\Eghl\Message;
 
 
-use Omnipay\Common\Message\ResponseInterface;
-
 class CompletePurchaseRequest extends AbstractRequest
 {
     public function getData()
@@ -18,7 +16,7 @@ class CompletePurchaseRequest extends AbstractRequest
 
     public function sendData($data)
     {
-        // TODO: Implement sendData() method.
+        return new CompletePurchaseResponse($this, $data);
     }
 
     private function hashValue($data)
