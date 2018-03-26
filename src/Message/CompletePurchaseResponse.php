@@ -16,7 +16,7 @@ class CompletePurchaseResponse extends AbstractResponse
     public function isSuccessful()
     {
         return (strtoupper($this->data['HashValue2']) == strtoupper($this->data['computed_hash_value'])) &&
-            $this->data['TxnStatus'] === 0;
+            $this->data['TxnStatus'] == 0;
     }
 
     public function getTransactionId()
