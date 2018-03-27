@@ -71,7 +71,7 @@ class PurchaseResponseTest extends TestCase
         $request
             ->expects($this->any())
             ->method('getTestMode')
-            ->will($this->returnValue(false));
+            ->will($this->returnValue(true));
 
         $response = new PurchaseResponse($request, $data);
 
@@ -87,4 +87,33 @@ class PurchaseResponseTest extends TestCase
         $this->assertEquals($data, $response->getRedirectData());
     }
 
+    public function testGetRedirectUrl()
+    {
+        $request = $this
+            ->getMockBuilder(AbstractRequest::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $request
+            ->expects($this->at(0))
+            ->method('getTestMode')
+            ->will($this->returnValue(false));
+
+        $request
+            ->expects($this->at(1))
+            ->method('getTestMode')
+            ->will($this->returnValue(true));
+
+        $response = new PurchaseResponse($request, []);
+
+        $this->assertEquals(
+            'https://securepay.e-ghl.com/IPG/Payment.aspx',
+            $response->getRedirectUrl()
+        );
+
+        $this->assertEquals(
+            'https://test2pay.ghl.com/IPGSG/Payment.aspx',
+            $response->getRedirectUrl()
+        );
+    }
 }

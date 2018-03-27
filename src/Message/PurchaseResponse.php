@@ -15,7 +15,7 @@ class PurchaseResponse extends AbstractResponse
 
     private $testUrl = 'https://test2pay.ghl.com/IPGSG/Payment.aspx';
 
-    private $liveUrl = 'https://test2pay.ghl.com/IPGSG/Payment.aspx';
+    private $liveUrl = 'https://securepay.e-ghl.com/IPG/Payment.aspx';
 
     public function __construct(AbstractRequest $request, $data)
     {

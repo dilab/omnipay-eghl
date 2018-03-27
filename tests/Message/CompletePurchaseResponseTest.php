@@ -36,7 +36,7 @@ class CompletePurchaseResponseTest extends TestCase
             'HashValue2' => '8795c391a3091585295906a0694d9d13d29c38aa3d4d4521385f222ac19fb773',
             'TxnID' => 'TESTTXN123',
             'IssuingBank' => '',
-            'TxnStatus' => '1',
+            'TxnStatus' => '0',
             'AuthCode' => '123456',
             'BankRefNo' => '',
             'TxnMessage' => '',
