@@ -17,7 +17,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "dilab/omnipay-eghl": "~1.0"
+        "dilab/omnipay-eghl": "~2.0"
     }
 }
 ```
