@@ -67,7 +67,7 @@ class PurchaseRequest extends AbstractRequest
             );
         }
 
-        if (strlen($data['PaymentDesc']) > 20) {
+        if (strlen($data['PaymentDesc']) > 100) {
             throw new InvalidRequestException(
                 sprintf('Invalid PaymentDesc length: %s, max length is 100', strlen($data['PaymentDesc']))
             );
