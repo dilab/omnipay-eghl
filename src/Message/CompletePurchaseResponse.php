@@ -31,7 +31,22 @@ class CompletePurchaseResponse extends AbstractResponse
 
     public function getMessage()
     {
-        return isset($this->data['TxnMessage']) ? $this->data['TxnMessage'] : null;
+        if ((strtoupper($this->data['HashValue2']) != strtoupper($this->data['computed_hash_value']))) {
+            return sprintf('HashValue2: %s does not match calculated HashValue:%s',
+                strtoupper($this->data['HashValue2']),
+                strtoupper($this->data['computed_hash_value'])
+            );
+        }
+
+        if ($this->data['TxnStatus'] != 0) {
+            return sprintf('Invalid TxnStatus: %s', $this->data['TxnStatus']);
+        }
+
+        if (isset($this->data['TxnMessage'])) {
+            return $this->data['TxnMessage'];
+        }
+
+        return 'No Message is Returned from Gateway';
     }
 
 }
